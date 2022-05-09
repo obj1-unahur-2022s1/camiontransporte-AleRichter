@@ -1,10 +1,15 @@
-import cosas.*
+import cosas2.*
 
 object camion {
    const cosas = []
    var property tara = 1000
    
-   method cargar(cosa){cosas.add(cosa)}
+   method cargar(cosa){
+   	  cosas.add(cosa)
+   	  cosa.estaCargado()
+   }
+   
+   method cosasCargadas() = cosas
 
    method descargar(cosa){cosas.remove(cosa)}
    
@@ -22,7 +27,7 @@ object camion {
       cosas.filter({c => c.nivelPeligrosidad() > nivel})
        
    method objetosMasPeligrososQue(cosa) =
-      self.objetosQueSuperanPeligrosidad(cosa.nivelPeligrosidad())
+      self.objetosQueSuperanPeligrosidad(cosa.nivelPeligrosidad()) 
    
    method puedeCircularEnRuta(nivelMaximoPeligrosidad) =
       not self.excedidoDePeso() and cosas.all({c => c.nivelPeligrosidad() <= nivelMaximoPeligrosidad})
@@ -32,4 +37,6 @@ object camion {
    method cosaMasPesada() = cosas.max({c => c.peso()})
    
    method pesos() = cosas.map({c => c.peso()})
+   
+   method totalBultos() = cosas.sum({c => c.bultos()})
 }

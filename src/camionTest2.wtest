@@ -1,0 +1,54 @@
+import camion2.*
+import cosas2.*
+
+describe "Test de camion cargado con bumblebee como robot, 150 kilos de arena,
+          una bateria Antiaerea con misiles puestos, un paquete con 80 ladrillos 
+          y con un embalaje de seguridad" {
+
+	method initialize(){
+		camion.cargar(knightRider)
+        camion.cargar(bumblebee) 
+        camion.cargar(paqueteLadrillos)
+        camion.cargar(arenaAGranel)
+        camion.cargar(bateriaAntiarea)
+        contenedorPortuario.agregarCosa(residuosRadioactivos)
+        camion.cargar(contenedorPortuario)	
+        embalajeSeguridad.embalarCosa(knightRider)
+        camion.cargar(knightRider)
+	}
+	
+    test "test de KnightRider cargado al camion y sin efecto" {
+	    assert.equals(500, knightRider.peso())
+	    assert.equals(10, knightRider.nivelPeligrosidad())
+    }
+    
+    test "test de bumblbee cargado al camion y transformado en robot" {
+        assert.notThat(bumblebee.tranformadoEnAuto())
+    }
+
+    test "test de paquete de ladrillos cargado al camion con 12 ladrillos" {
+        assert.equals(12, paqueteLadrillos.cantLadrillos())
+    }
+    
+    test "test de arena a granel cargado al camion con 20 kilos" {
+        assert.equals(20, arenaAGranel.peso())
+    }
+    
+    test "test de batería antiaérea cargado al camion con misiles" {
+        assert.that(bateriaAntiarea.tieneMisiles())
+    }
+    
+    test "test de contenedor portuario cargado al camion con 15 kilos de residuos radioactivos" {
+        assert.equals(115, contenedorPortuario.peso())
+    }
+
+    test "test de residuos radioactivos cargado al camion con 15 kilos " {
+        assert.equals(15, residuosRadioactivos.peso())
+    }
+    
+    test "test de embalaje de seguridad con knightRider cargado al camion y sin efecto" {
+	    assert.equals(500, embalajeSeguridad.peso())
+	    assert.equals(5, embalajeSeguridad.nivelPeligrosidad())
+    }
+
+}

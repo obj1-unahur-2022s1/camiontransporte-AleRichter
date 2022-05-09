@@ -1,0 +1,45 @@
+import cosas2.*
+
+describe "Test para ver si funciona el nuevo metodo de bultos" {
+	
+	method initialize(){
+		bateriaAntiarea.tieneMisiles(false)
+		paqueteLadrillos.cantLadrillos(300)
+		contenedorPortuario.agregarCosa(bumblebee)
+		contenedorPortuario.agregarCosa(paqueteLadrillos)
+		contenedorPortuario.agregarCosa(bateriaAntiarea)
+	}
+	
+	test "Test de knightRider antiarea sin misiles" {
+		assert.equals(1, knightRider.bultos())
+	}
+	
+	test "Test de bateria antiarea sin misiles" {
+		assert.equals(1, bateriaAntiarea.bultos())
+	}
+
+	test "Test de residuos radioactivos" {
+		assert.equals(1, residuosRadioactivos.bultos())
+	}
+	
+	test "Test de bumblebee" {
+		assert.equals(2, bumblebee.bultos())
+	}
+	
+	test "Test de  embalaje de seguridad" {
+		assert.equals(2, embalajeSeguridad.bultos())
+	}
+	
+	test "Test de paquete de ladrillos cargado con 300 ladrillos" {
+ 		assert.equals(2, paqueteLadrillos.bultos())
+	}
+
+	test "Test de bateria antiarea con misiles" {
+		bateriaAntiarea.tieneMisiles(true)
+		assert.equals(2, bateriaAntiarea.bultos())
+	}
+	
+	test "Test de contenedor portuario" {
+		assert.equals(6, contenedorPortuario.bultos())
+	}
+}

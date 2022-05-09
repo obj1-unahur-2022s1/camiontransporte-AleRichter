@@ -1,3 +1,62 @@
 import camion.*
 import cosas.*
 
+describe "Test de camion cargado con bumblebee como robot, 150 kilos de arena,
+          una bateria Antiaerea con misiles puestos, un paquete con 80 ladrillos 
+          y con un embalaje de seguridad" {
+
+	method initialize(){
+		
+		bumblebee.tranformarseEnRobot()
+		arenaAGranel.peso(150)	
+		bateriaAntiarea.tieneMisiles(true)
+		paqueteLadrillos.cantLadrillos(80)
+		embalajeSeguridad.embalarCosa(paqueteLadrillos)		
+        camion.cargar(bumblebee) 
+        camion.cargar(arenaAGranel)
+        camion.cargar(bateriaAntiarea)
+        camion.cargar(embalajeSeguridad)	
+	}
+	
+	test "Test del metodo todo par" {
+		assert.that(camion.todoPesoPar())
+	}
+	
+	test "Test del metodo hay Alguno Que, para ver si alguno tiene el peso de bumblebee convertido en robot." {
+		assert.that(camion.hayAlgunoQuePesa(800))
+	}	
+
+	test "Test del metodo el de Nivel(nivel) que devuelve la bateria antiaerea." {
+		assert.equals(bateriaAntiarea,camion.elDeNivel(100))
+	}
+	
+	test "Test del metodo peso total" {
+		assert.equals(2410,camion.pesoTotal())
+	}
+	
+	test "Test del metodo excedido De Peso" {
+		assert.notThat(camion.excedidoDePeso())
+	}
+	
+	test "Test del metodo obejetos Que Superan Peligrosidad " {
+		assert.equals([bumblebee, bateriaAntiarea],camion.objetosQueSuperanPeligrosidad(10))
+	}
+	
+	test "Test del metodo puede Circular En Ruta" {
+		assert.notThat(camion.puedeCircularEnRuta(1))
+	}
+	
+	test "Test del metodo tiene Algo Que Pesa Entre" {
+		assert.that(camion.tieneAlgoQuePesaEntre(10,200))
+	}
+
+	test "Test del metodo cosa Mas Pesada" {
+		assert.equals(bumblebee,camion.cosaMasPesada())
+	}	
+
+	test "Test de pesos " {
+		assert.equals([800,150,300,160],camion.pesos())
+	}
+
+}
+
