@@ -7,7 +7,7 @@ object camion {
    method cargar(cosa){
    	  cosas.add(cosa)
    	  cosa.estaCargado()
-   }
+   }    
    
    method cosasCargadas() = cosas
 
