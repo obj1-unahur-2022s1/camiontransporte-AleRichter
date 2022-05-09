@@ -1,9 +1,7 @@
 import camion2.*
 import cosas2.*
 
-describe "Test de camion cargado con bumblebee como robot, 150 kilos de arena,
-          una bateria Antiaerea con misiles puestos, un paquete con 80 ladrillos 
-          y con un embalaje de seguridad" {
+describe "Test de camion cargado con todas las cosas y asi surgir efecto o no en cada una de ellas " {
 
 	method initialize(){
 		camion.cargar(knightRider)

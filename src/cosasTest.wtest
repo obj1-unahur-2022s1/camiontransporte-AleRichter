@@ -1,7 +1,7 @@
 import cosas.*
 
 
-describe "Test para porbar los distintos pesos y nivel de peligro de los objetos." {
+describe "Test para pobar los distintos pesos y nivel de peligro de los objetos." {
 	
 	method initialize(){
 		bumblebee.tranformarseEnRobot()
